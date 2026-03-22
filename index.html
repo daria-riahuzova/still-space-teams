@@ -109,17 +109,6 @@
             text-align: center;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: var(--accent-light);
-            color: var(--accent);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 24px;
-        }
-
         h1 {
             font-size: 40px;
             font-weight: 700;
@@ -343,16 +332,24 @@
         }
 
         /* Steps */
-        .steps { display: grid; gap: 16px; margin-top: 24px; }
-        .step { display: flex; gap: 16px; align-items: flex-start; }
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
+        .step {
+            text-align: center;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 16px;
+            position: relative;
+        }
         .step-num {
-            flex-shrink: 0; width: 36px; height: 36px;
+            width: 40px; height: 40px;
             background: var(--accent); color: white; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-weight: 600; font-size: 16px;
+            font-weight: 700; font-size: 18px;
+            margin: 0 auto 14px;
         }
-        .step-content h3 { font-size: 16px; margin-bottom: 4px; }
-        .step-content p { font-size: 15px; margin-bottom: 0; }
+        .step-content h3 { font-size: 15px; margin-bottom: 6px; line-height: 1.35; }
+        .step-content p { font-size: 13px; margin-bottom: 0; color: var(--text-secondary); }
 
         /* ROI */
         .roi-grid {
@@ -406,6 +403,7 @@
             .hero-desc { font-size: 17px; }
             .stats { grid-template-columns: 1fr; }
             .features-grid { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: repeat(2, 1fr); }
             .roi-grid { grid-template-columns: 1fr; }
             .comparison { overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .comparison table { min-width: 520px; }
@@ -439,17 +437,13 @@
 <!-- HERO -->
 <section class="hero">
     <div class="container">
-        <div class="hero-badge">
-            <span data-lang="uk">Безкоштовний пілот &mdash; 60 днів</span>
-            <span data-lang="ru">Бесплатный пилот &mdash; 60 дней</span>
-        </div>
         <h1>
-            <span data-lang="uk">Still Space<br>для команд</span>
-            <span data-lang="ru">Still Space<br>для команд</span>
+            <span data-lang="uk">Застосунок для ментального здоров'я вашої команди</span>
+            <span data-lang="ru">Приложение для ментального здоровья вашей команды</span>
         </h1>
         <p class="hero-desc">
-            <span data-lang="uk">Застосунок щоденної турботи про ментальне здоров'я співробітників. Науково обґрунтований підхід. Повна приватність.</span>
-            <span data-lang="ru">Приложение ежедневной заботы о ментальном здоровье сотрудников. Научно обоснованный подход. Полная приватность.</span>
+            <span data-lang="uk">Промокод для команди &rarr; співробітники завантажують Still Space &rarr; 60 днів повного доступу. Науково обґрунтовані практики. Повна приватність. Без реєстрацій.</span>
+            <span data-lang="ru">Промокод для команды &rarr; сотрудники скачивают Still Space &rarr; 60 дней полного доступа. Научно обоснованные практики. Полная приватность. Без регистраций.</span>
         </p>
         <div class="hero-actions">
             <a href="mailto:kolycha9@gmail.com?subject=Still%20Space%20для%20команди" class="btn-primary">
@@ -515,7 +509,7 @@
             <span data-lang="uk">Науково обґрунтований підхід</span>
             <span data-lang="ru">Научно обоснованный подход</span>
         </h2>
-        <p>
+        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 8px;">
             <span data-lang="uk">Кожна функція базується на дослідженнях із доведеною ефективністю</span>
             <span data-lang="ru">Каждая функция основана на исследованиях с доказанной эффективностью</span>
         </p>
