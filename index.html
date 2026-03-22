@@ -6,14 +6,15 @@
     <title>Still Space для команд</title>
     <style>
         :root {
-            --bg: #FAF9F6;
+            --bg: #FAF8FC;
             --text: #1A1A1A;
             --text-secondary: #5C5C5C;
-            --accent: #4A6741;
-            --accent-light: #E8EFE6;
+            --accent: #7B5EA7;
+            --accent-dark: #5E4580;
+            --accent-light: #F0EBF5;
             --card-bg: #FFFFFF;
-            --border: #E5E5E5;
-            --warm: #F5F0EB;
+            --border: #E8E4ED;
+            --warm: #F5F0F8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -121,7 +122,7 @@
         /* Problem stats */
         .stats {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 16px;
             margin: 32px 0;
         }
@@ -146,6 +147,12 @@
             font-size: 14px;
             color: var(--text-secondary);
             line-height: 1.4;
+        }
+
+        .stat-source {
+            font-size: 12px;
+            color: #999;
+            margin-top: 6px;
         }
 
         /* Differentiator */
@@ -233,36 +240,55 @@
         }
 
         .comparison th {
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 14px;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+            background: var(--warm);
+        }
+
+        .comparison th:first-child {
+            width: 28%;
+        }
+
+        .comparison th.highlight {
             background: var(--accent);
             color: white;
-            padding: 14px 20px;
-            text-align: left;
-            font-size: 15px;
-            font-weight: 600;
+            text-align: center;
         }
 
         .comparison td {
-            padding: 14px 20px;
+            padding: 12px 16px;
             border-bottom: 1px solid var(--border);
-            font-size: 15px;
-            vertical-align: top;
+            font-size: 14px;
+            vertical-align: middle;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .comparison td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: var(--text);
         }
 
         .comparison tr:last-child td {
             border-bottom: none;
         }
 
-        .comparison tr:nth-child(even) {
-            background: var(--bg);
+        .comparison .check {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 18px;
         }
 
-        .comparison td:first-child {
-            color: var(--text-secondary);
+        .comparison .dash {
+            color: #ccc;
         }
 
-        .comparison td:last-child {
-            color: var(--text);
-            font-weight: 500;
+        .comparison td.highlight-col {
+            background: rgba(123, 94, 167, 0.04);
         }
 
         /* Steps */
@@ -341,7 +367,7 @@
         /* CTA */
         .cta {
             text-align: center;
-            padding: 60px 0 80px;
+            padding: 60px 0 20px;
         }
 
         .cta-box {
@@ -363,13 +389,22 @@
             margin-bottom: 28px;
         }
 
+        .cta-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .cta-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background: white;
             color: var(--accent);
-            padding: 14px 36px;
+            padding: 14px 28px;
             border-radius: 12px;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 600;
             text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -380,10 +415,46 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.15);
         }
 
+        .cta-button.secondary {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
         .cta-note {
-            margin-top: 16px;
+            margin-top: 20px;
             font-size: 14px;
             color: rgba(255,255,255,0.6);
+        }
+
+        /* App Store section */
+        .appstore-section {
+            text-align: center;
+            padding: 40px 0 60px;
+        }
+
+        .appstore-section p {
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        .appstore-badge {
+            display: inline-block;
+            height: 48px;
+        }
+
+        .appstore-badge img {
+            height: 48px;
+        }
+
+        .ios-note {
+            font-size: 13px;
+            color: #999;
+            margin-top: 12px;
         }
 
         /* Footer */
@@ -420,7 +491,9 @@
             .diff-block { padding: 24px 20px; }
             .cta-box { padding: 36px 24px; }
             .cta-box h2 { font-size: 26px; }
-            .comparison th, .comparison td { padding: 12px 14px; font-size: 14px; }
+            .comparison th, .comparison td { padding: 10px 10px; font-size: 12px; }
+            .comparison th:first-child { width: 30%; }
+            .cta-buttons { flex-direction: column; align-items: center; }
         }
 
         /* Hide inactive lang */
@@ -438,15 +511,17 @@
 <!-- HERO -->
 <header class="hero">
     <div class="container">
-        <div class="hero-badge" data-lang="uk">60 днів безкоштовно</div>
-        <div class="hero-badge" data-lang="ru">60 дней бесплатно</div>
+        <div class="hero-badge">
+            <span data-lang="uk">Безкоштовний пілот &mdash; 60 днів</span>
+            <span data-lang="ru">Бесплатный пилот &mdash; 60 дней</span>
+        </div>
         <h1>
             <span data-lang="uk">Still Space<br>для команд</span>
             <span data-lang="ru">Still Space<br>для команд</span>
         </h1>
         <p>
-            <span data-lang="uk">Інструмент щоденної турботи про ментальне здоров'я співробітників. Науково обґрунтований. Повністю приватний.</span>
-            <span data-lang="ru">Инструмент ежедневной заботы о ментальном здоровье сотрудников. Научно обоснованный. Полностью приватный.</span>
+            <span data-lang="uk">Застосунок щоденної турботи про ментальне здоров'я співробітників. Науково обґрунтований підхід. Повна приватність.</span>
+            <span data-lang="ru">Приложение ежедневной заботы о ментальном здоровье сотрудников. Научно обоснованный подход. Полная приватность.</span>
         </p>
     </div>
 </header>
@@ -462,35 +537,29 @@
             <div class="stat">
                 <div class="stat-number">41%</div>
                 <div class="stat-label">
-                    <span data-lang="uk">працівників щодня відчувають стрес</span>
-                    <span data-lang="ru">сотрудников ежедневно испытывают стресс</span>
+                    <span data-lang="uk">працівників щодня відчувають значний стрес</span>
+                    <span data-lang="ru">сотрудников ежедневно испытывают значительный стресс</span>
                 </div>
+                <div class="stat-source">Gallup, 2024</div>
             </div>
             <div class="stat">
                 <div class="stat-number">80%</div>
                 <div class="stat-label">
-                    <span data-lang="uk">у зоні ризику вигорання</span>
-                    <span data-lang="ru">в зоне риска выгорания</span>
+                    <span data-lang="uk">знаходяться в зоні ризику вигорання</span>
+                    <span data-lang="ru">находятся в зоне риска выгорания</span>
                 </div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">~30%</div>
-                <div class="stat-label">
-                    <span data-lang="uk">використовують корпоративні програми</span>
-                    <span data-lang="ru">используют корпоративные программы</span>
-                </div>
+                <div class="stat-source">Gallup, 2025</div>
             </div>
         </div>
-        <p style="text-align:center; font-size: 13px;">Gallup 2024, Alight 2025</p>
 
         <div class="diff-block">
             <p style="font-size: 18px; color: var(--text); font-weight: 500; margin-bottom: 12px;">
-                <span data-lang="uk">Still Space працює інакше.</span>
-                <span data-lang="ru">Still Space работает иначе.</span>
+                <span data-lang="uk">Люди рідко просять про допомогу. Але користуються інструментами, якщо вони під рукою.</span>
+                <span data-lang="ru">Люди редко просят о помощи. Но пользуются инструментами, если они под рукой.</span>
             </p>
             <p>
-                <span data-lang="uk">Це не терапія й не трекер настрою з графіками для HR. Це особистий тихий простір, де людина може подихати, зняти напругу, зробити маленький крок для себе — від 1 хвилини на день.</span>
-                <span data-lang="ru">Это не терапия и не трекер настроения с графиками для HR. Это личное тихое пространство, где человек может подышать, снять напряжение, сделать маленький шаг для себя — от 1 минуты в день.</span>
+                <span data-lang="uk">Still Space — це не терапія й не трекер настрою з графіками для HR. Це особистий тихий простір, де людина може подихати, зняти напругу, зробити маленький крок для себе — у будь-який момент.</span>
+                <span data-lang="ru">Still Space — это не терапия и не трекер настроения с графиками для HR. Это личное тихое пространство, где человек может подышать, снять напряжение, сделать маленький шаг для себя — в любой момент.</span>
             </p>
         </div>
     </div>
@@ -517,8 +586,8 @@
                     <span data-lang="ru">Поведенческая активация</span>
                 </h3>
                 <p>
-                    <span data-lang="uk">100+ простих дій, підібраних під поточний стан. Не потребує спеціаліста, ефективно працює в цифровому форматі.</span>
-                    <span data-lang="ru">100+ простых действий, подобранных под текущее состояние. Не требует специалиста, эффективно работает в цифровом формате.</span>
+                    <span data-lang="uk">100+ простих дій, підібраних під поточний стан і місце: вдома, на роботі, на вулиці. Не потребує спеціаліста, працює автономно та офлайн.</span>
+                    <span data-lang="ru">100+ простых действий, подобранных под текущее состояние и место: дома, на работе, на улице. Не требует специалиста, работает автономно и офлайн.</span>
                 </p>
                 <span class="evidence">
                     <span data-lang="uk">Мета-аналіз: Hedges' g = 0.85</span>
@@ -528,12 +597,12 @@
 
             <div class="science-card">
                 <h3>
-                    <span data-lang="uk">Експресивне письмо (Пеннебейкер)</span>
-                    <span data-lang="ru">Экспрессивное письмо (Пеннебейкер)</span>
+                    <span data-lang="uk">Експресивне письмо (метод Пеннебейкера)</span>
+                    <span data-lang="ru">Экспрессивное письмо (метод Пеннебейкера)</span>
                 </h3>
                 <p>
-                    <span data-lang="uk">Написати все, що накипіло. Текст зникає — залишається полегшення. Знижує депресивні симптоми, підвищує стійкість.</span>
-                    <span data-lang="ru">Написать всё, что накипело. Текст исчезает — остаётся облегчение. Снижает депрессивные симптомы, повышает устойчивость.</span>
+                    <span data-lang="uk">Знижує депресивні симптоми, підвищує самоефективність та стійкість. У звільнених фахівців — прискорює працевлаштування.</span>
+                    <span data-lang="ru">Снижает депрессивные симптомы, повышает самоэффективность и устойчивость. У уволенных специалистов — ускоряет трудоустройство.</span>
                 </p>
                 <span class="evidence">
                     <span data-lang="uk">100+ досліджень з 1986 року</span>
@@ -543,12 +612,12 @@
 
             <div class="science-card">
                 <h3>
-                    <span data-lang="uk">Усвідомлене дихання та медитація</span>
-                    <span data-lang="ru">Осознанное дыхание и медитация</span>
+                    <span data-lang="uk">Практики на основі усвідомленості</span>
+                    <span data-lang="ru">Практики на основе осознанности</span>
                 </h3>
                 <p>
-                    <span data-lang="uk">Значно знижує стрес, вигорання та тривогу. Підвищує задоволеність роботою. Особливо ефективно через мобільні застосунки.</span>
-                    <span data-lang="ru">Значительно снижает стресс, выгорание и тревогу. Повышает удовлетворённость работой. Особенно эффективно через мобильные приложения.</span>
+                    <span data-lang="uk">Щоденні ранкові та вечірні практики: заземлення, робота з тілом, візуалізація, сканування відчуттів. Значно знижують стрес, вигорання та тривогу.</span>
+                    <span data-lang="ru">Ежедневные утренние и вечерние практики: заземление, работа с телом, визуализация, сканирование ощущений. Значительно снижают стресс, выгорание и тревогу.</span>
                 </p>
                 <span class="evidence">
                     <span data-lang="uk">Мета-аналіз: 99 досліджень, 16 054 учасники</span>
@@ -562,12 +631,12 @@
                     <span data-lang="ru">Рефлексия и саморегуляция</span>
                 </h3>
                 <p>
-                    <span data-lang="uk">Щоденні практики, думки дня, питання для роздумів — формують звичку помічати свій стан і дбати про себе.</span>
-                    <span data-lang="ru">Ежедневные практики, мысли дня, вопросы для размышлений — формируют привычку замечать своё состояние и заботиться о себе.</span>
+                    <span data-lang="uk">Думки дня, питання для роздумів — формують звичку помічати свій стан і дбати про себе. Кожна практика з посиланням на наукове джерело.</span>
+                    <span data-lang="ru">Мысли дня, вопросы для размышлений — формируют привычку замечать своё состояние и заботиться о себе. Каждая практика со ссылкой на научный источник.</span>
                 </p>
                 <span class="evidence">
-                    <span data-lang="uk">Ранкові та вечірні ритуали</span>
-                    <span data-lang="ru">Утренние и вечерние ритуалы</span>
+                    <span data-lang="uk">Щоденні ранкові та вечірні ритуали</span>
+                    <span data-lang="ru">Ежедневные утренние и вечерние ритуалы</span>
                 </span>
             </div>
         </div>
@@ -592,8 +661,8 @@
                     <span data-lang="ru">100+ действий</span>
                 </h3>
                 <p>
-                    <span data-lang="uk">Підібрані під стан: від "подихати" до активних вправ</span>
-                    <span data-lang="ru">Подобраны под состояние: от "подышать" до активных упражнений</span>
+                    <span data-lang="uk">Під стан і місце: вдома, на роботі, на вулиці</span>
+                    <span data-lang="ru">Под состояние и место: дома, на работе, на улице</span>
                 </p>
             </div>
             <div class="feature">
@@ -603,8 +672,8 @@
                     <span data-lang="ru">Утренние и вечерние практики</span>
                 </h3>
                 <p>
-                    <span data-lang="uk">Нові щодня. Дихання, медитації, робота з тілом</span>
-                    <span data-lang="ru">Новые каждый день. Дыхание, медитации, работа с телом</span>
+                    <span data-lang="uk">Нові щодня. З посиланням на наукове джерело</span>
+                    <span data-lang="ru">Новые каждый день. Со ссылкой на научный источник</span>
                 </p>
             </div>
             <div class="feature">
@@ -614,12 +683,12 @@
                     <span data-lang="ru">Выговориться</span>
                 </h3>
                 <p>
-                    <span data-lang="uk">Написати, що хвилює — текст зникає, полегшення залишається</span>
-                    <span data-lang="ru">Написать, что волнует — текст исчезает, облегчение остаётся</span>
+                    <span data-lang="uk">Експресивне письмо за методом Пеннебейкера</span>
+                    <span data-lang="ru">Экспрессивное письмо по методу Пеннебейкера</span>
                 </p>
             </div>
             <div class="feature">
-                <div class="feature-icon">&#127752;</div>
+                <div class="feature-icon">&#128156;</div>
                 <h3>
                     <span data-lang="uk">Просто побудь поруч</span>
                     <span data-lang="ru">Просто побудь рядом</span>
@@ -661,68 +730,101 @@
 <section>
     <div class="container">
         <h2>
-            <span data-lang="uk">Чому це працює краще</span>
-            <span data-lang="ru">Почему это работает лучше</span>
+            <span data-lang="uk">Порівняння з альтернативами</span>
+            <span data-lang="ru">Сравнение с альтернативами</span>
         </h2>
 
         <div class="comparison">
             <table>
                 <tr>
+                    <th></th>
+                    <th class="highlight">Still Space</th>
+                    <th>Calm / Headspace</th>
                     <th>
-                        <span data-lang="uk">Типова програма</span>
-                        <span data-lang="ru">Типичная программа</span>
+                        <span data-lang="uk">Корпоративний психолог</span>
+                        <span data-lang="ru">Корпоративный психолог</span>
                     </th>
-                    <th>Still Space</th>
+                    <th>EAP</th>
                 </tr>
                 <tr>
                     <td>
-                        <span data-lang="uk">Потрібна реєстрація</span>
-                        <span data-lang="ru">Нужна регистрация</span>
+                        <span data-lang="uk">Науковий підхід</span>
+                        <span data-lang="ru">Научный подход</span>
                     </td>
-                    <td>
-                        <span data-lang="uk">Відкрив — користуєшся</span>
-                        <span data-lang="ru">Открыл — пользуешься</span>
-                    </td>
+                    <td class="highlight-col check">&#10003;</td>
+                    <td class="check">&#10003;</td>
+                    <td class="check">&#10003;</td>
+                    <td class="check">&#10003;</td>
                 </tr>
                 <tr>
                     <td>
-                        <span data-lang="uk">Сесії з психологом — бар'єр</span>
-                        <span data-lang="ru">Сессии с психологом — барьер</span>
+                        <span data-lang="uk">Не потребує реєстрації</span>
+                        <span data-lang="ru">Не требует регистрации</span>
                     </td>
-                    <td>
-                        <span data-lang="uk">Від 1 хвилини, анонімно</span>
-                        <span data-lang="ru">От 1 минуты, анонимно</span>
-                    </td>
+                    <td class="highlight-col check">&#10003;</td>
+                    <td class="dash">&mdash;</td>
+                    <td class="dash">&mdash;</td>
+                    <td class="dash">&mdash;</td>
                 </tr>
                 <tr>
-                    <td>
-                        <span data-lang="uk">Складне впровадження</span>
-                        <span data-lang="ru">Сложное внедрение</span>
-                    </td>
-                    <td>
-                        <span data-lang="uk">Промокод — і все працює</span>
-                        <span data-lang="ru">Промокод — и всё работает</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span data-lang="uk">Використовують ~30%</span>
-                        <span data-lang="ru">Используют ~30%</span>
-                    </td>
-                    <td>
-                        <span data-lang="uk">Низький бар'єр — вища залученість</span>
-                        <span data-lang="ru">Низкий барьер — выше вовлечённость</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span data-lang="uk">HR бачить дані</span>
-                        <span data-lang="ru">HR видит данные</span>
-                    </td>
                     <td>
                         <span data-lang="uk">Повна приватність</span>
                         <span data-lang="ru">Полная приватность</span>
                     </td>
+                    <td class="highlight-col check">&#10003;</td>
+                    <td class="dash">&mdash;</td>
+                    <td class="dash">&mdash;</td>
+                    <td class="dash">&mdash;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span data-lang="uk">Працює офлайн</span>
+                        <span data-lang="ru">Работает офлайн</span>
+                    </td>
+                    <td class="highlight-col check">&#10003;</td>
+                    <td class="check">&#10003;</td>
+                    <td class="dash">&mdash;</td>
+                    <td class="dash">&mdash;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span data-lang="uk">Впровадження за 5 хвилин</span>
+                        <span data-lang="ru">Внедрение за 5 минут</span>
+                    </td>
+                    <td class="highlight-col check">&#10003;</td>
+                    <td class="dash">&mdash;</td>
+                    <td class="dash">&mdash;</td>
+                    <td class="dash">&mdash;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span data-lang="uk">Без автосписання</span>
+                        <span data-lang="ru">Без автосписания</span>
+                    </td>
+                    <td class="highlight-col check">&#10003;</td>
+                    <td class="dash">&mdash;</td>
+                    <td class="check">&#10003;</td>
+                    <td class="check">&#10003;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span data-lang="uk">Українська мова</span>
+                        <span data-lang="ru">Украинский язык</span>
+                    </td>
+                    <td class="highlight-col check">&#10003;</td>
+                    <td class="dash">&mdash;</td>
+                    <td class="check">&#10003;</td>
+                    <td class="dash">&mdash;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span data-lang="uk">Безкоштовний пілот</span>
+                        <span data-lang="ru">Бесплатный пилот</span>
+                    </td>
+                    <td class="highlight-col"><strong>60</strong> <span data-lang="uk">днів</span><span data-lang="ru">дней</span></td>
+                    <td>7&ndash;14 <span data-lang="uk">днів</span><span data-lang="ru">дней</span></td>
+                    <td class="dash">&mdash;</td>
+                    <td class="dash">&mdash;</td>
                 </tr>
             </table>
         </div>
@@ -744,12 +846,12 @@
                 <div class="step-num">1</div>
                 <div class="step-content">
                     <h3>
-                        <span data-lang="uk">Отримайте промокод</span>
-                        <span data-lang="ru">Получите промокод</span>
+                        <span data-lang="uk">Отримайте промокод під розмір вашої команди</span>
+                        <span data-lang="ru">Получите промокод под размер вашей команды</span>
                     </h3>
                     <p>
-                        <span data-lang="uk">Унікальний код для вашої команди з лімітом активацій</span>
-                        <span data-lang="ru">Уникальный код для вашей команды с лимитом активаций</span>
+                        <span data-lang="uk">Напишіть нам — підберемо умови</span>
+                        <span data-lang="ru">Напишите нам — подберём условия</span>
                     </p>
                 </div>
             </div>
@@ -787,8 +889,8 @@
                         <span data-lang="ru">После пилота — обсуждаем продолжение</span>
                     </h3>
                     <p>
-                        <span data-lang="uk">Без зобов'язань. Доступ просто завершується</span>
-                        <span data-lang="ru">Без обязательств. Доступ просто завершается</span>
+                        <span data-lang="uk">Якщо команді підійде — підберемо зручний формат</span>
+                        <span data-lang="ru">Если команде подойдёт — подберём удобный формат</span>
                     </p>
                 </div>
             </div>
@@ -802,16 +904,16 @@
 <section>
     <div class="container">
         <h2>
-            <span data-lang="uk">Це не витрата — це інвестиція</span>
-            <span data-lang="ru">Это не расход — это инвестиция</span>
+            <span data-lang="uk">Still Space для команди — це інвестиція</span>
+            <span data-lang="ru">Still Space для команды — это инвестиция</span>
         </h2>
 
         <div class="roi-grid">
             <div class="roi-card">
-                <div class="roi-number">&pound;4.70</div>
+                <div class="roi-number">4.7x</div>
                 <div class="roi-label">
-                    <span data-lang="uk">повертає кожен &pound;1, вкладений у ментальне здоров'я</span>
-                    <span data-lang="ru">возвращает каждый &pound;1, вложенный в ментальное здоровье</span>
+                    <span data-lang="uk">повернення кожної одиниці, вкладеної в ментальне здоров'я</span>
+                    <span data-lang="ru">возврат каждой единицы, вложенной в ментальное здоровье</span>
                 </div>
             </div>
             <div class="roi-card">
@@ -838,18 +940,40 @@
     <div class="container">
         <div class="cta-box">
             <h2>
-                <span data-lang="uk">Безкоштовний пілот — 60 днів</span>
-                <span data-lang="ru">Бесплатный пилот — 60 дней</span>
+                <span data-lang="uk">Спробуйте безкоштовно — 60 днів</span>
+                <span data-lang="ru">Попробуйте бесплатно — 60 дней</span>
             </h2>
             <p>
-                <span data-lang="uk">Два місяці повного доступу для вашої команди. Без зобов'язань.</span>
-                <span data-lang="ru">Два месяца полного доступа для вашей команды. Без обязательств.</span>
+                <span data-lang="uk">Два місяці повного доступу для вашої команди</span>
+                <span data-lang="ru">Два месяца полного доступа для вашей команды</span>
             </p>
-            <a href="mailto:hello@still.space" class="cta-button">
-                <span data-lang="uk">Написати нам</span>
-                <span data-lang="ru">Написать нам</span>
-            </a>
-            <div class="cta-note">hello@still.space</div>
+            <div class="cta-buttons">
+                <a href="mailto:kolycha9@gmail.com?subject=Still%20Space%20для%20команди" class="cta-button">
+                    <span data-lang="uk">Написати на пошту</span>
+                    <span data-lang="ru">Написать на почту</span>
+                </a>
+                <a href="https://www.linkedin.com/in/riahuzova/" target="_blank" class="cta-button secondary">
+                    LinkedIn
+                </a>
+            </div>
+            <div class="cta-note">kolycha9@gmail.com</div>
+        </div>
+    </div>
+</section>
+
+<!-- App Store -->
+<section class="appstore-section">
+    <div class="container">
+        <p>
+            <span data-lang="uk">Завантажте Still Space вже зараз</span>
+            <span data-lang="ru">Скачайте Still Space уже сейчас</span>
+        </p>
+        <a href="https://apps.apple.com/app/still-space" target="_blank">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 48px;">
+        </a>
+        <div class="ios-note">
+            <span data-lang="uk">Наразі доступно тільки для iOS</span>
+            <span data-lang="ru">Сейчас доступно только для iOS</span>
         </div>
     </div>
 </section>
@@ -861,8 +985,8 @@
             <span data-lang="uk">Still Space — тихий простір для турботи про себе</span>
             <span data-lang="ru">Still Space — тихое пространство для заботы о себе</span>
         </div>
-        <span data-lang="uk">Науково обґрунтовані практики &middot; Повна приватність &middot; Від 1 хвилини на день</span>
-        <span data-lang="ru">Научно обоснованные практики &middot; Полная приватность &middot; От 1 минуты в день</span>
+        <span data-lang="uk">Науково обґрунтовані практики &middot; Повна приватність</span>
+        <span data-lang="ru">Научно обоснованные практики &middot; Полная приватность</span>
     </div>
 </footer>
 
