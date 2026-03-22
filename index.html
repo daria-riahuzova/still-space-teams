@@ -15,6 +15,7 @@
             --card-bg: #FFFFFF;
             --border: #E8E4ED;
             --warm: #F5F0F8;
+            --green: #34A853;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -33,28 +34,66 @@
             padding: 0 24px;
         }
 
-        /* Language switcher */
-        .lang-switch {
+        /* Header */
+        .site-header {
             position: fixed;
-            top: 20px;
-            right: 24px;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 248, 252, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 100;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-inner {
+            max-width: 720px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .logo img {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+        }
+
+        .logo span {
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .lang-switch {
             display: flex;
             gap: 4px;
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 20px;
             padding: 3px;
-            z-index: 100;
             font-size: 14px;
         }
 
         .lang-btn {
-            padding: 6px 14px;
+            padding: 5px 12px;
             border: none;
             background: transparent;
             border-radius: 16px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-secondary);
             transition: all 0.2s;
         }
@@ -89,37 +128,61 @@
             margin-bottom: 20px;
         }
 
-        .hero p {
+        .hero-desc {
             font-size: 19px;
             color: var(--text-secondary);
             max-width: 560px;
-            margin: 0 auto;
+            margin: 0 auto 32px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(123, 94, 167, 0.3);
+        }
+
+        .appstore-link img {
+            height: 44px;
+            display: block;
+        }
+
+        .ios-note {
+            font-size: 13px;
+            color: #999;
+            margin-top: 12px;
+            text-align: center;
         }
 
         /* Sections */
-        section {
-            padding: 60px 0;
-        }
+        section { padding: 60px 0; }
+        h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.3px; }
+        h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+        p { color: var(--text-secondary); margin-bottom: 16px; }
 
-        h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -0.3px;
-        }
-
-        h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        p {
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-
-        /* Problem stats */
+        /* Stats */
         .stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -143,48 +206,27 @@
             margin-bottom: 8px;
         }
 
-        .stat-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
+        .stat-label { font-size: 14px; color: var(--text-secondary); line-height: 1.4; }
+        .stat-source { font-size: 12px; color: #999; margin-top: 6px; }
 
-        .stat-source {
-            font-size: 12px;
-            color: #999;
-            margin-top: 6px;
-        }
-
-        /* Differentiator */
+        /* Diff block */
         .diff-block {
             background: var(--warm);
             border-radius: 20px;
             padding: 36px 32px;
             margin: 32px 0;
         }
-
-        .diff-block p:last-child {
-            margin-bottom: 0;
-        }
+        .diff-block p:last-child { margin-bottom: 0; }
 
         /* Science cards */
-        .science-grid {
-            display: grid;
-            gap: 16px;
-            margin-top: 24px;
-        }
-
+        .science-grid { display: grid; gap: 16px; margin-top: 24px; }
         .science-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 28px 24px;
         }
-
-        .science-card h3 {
-            color: var(--accent);
-        }
-
+        .science-card h3 { color: var(--accent); }
         .science-card .evidence {
             display: inline-block;
             background: var(--accent-light);
@@ -203,130 +245,117 @@
             gap: 16px;
             margin-top: 24px;
         }
-
         .feature {
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 24px 20px;
         }
+        .feature-icon { font-size: 28px; margin-bottom: 12px; }
+        .feature h3 { font-size: 16px; margin-bottom: 6px; }
+        .feature p { font-size: 14px; margin-bottom: 0; }
 
-        .feature-icon {
-            font-size: 28px;
-            margin-bottom: 12px;
-        }
-
-        .feature h3 {
-            font-size: 16px;
-            margin-bottom: 6px;
-        }
-
-        .feature p {
-            font-size: 14px;
-            margin-bottom: 0;
-        }
-
-        /* Comparison table */
-        .comparison {
-            margin-top: 24px;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-        }
-
-        .comparison table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .comparison th {
-            padding: 14px 16px;
-            text-align: left;
-            font-size: 14px;
-            font-weight: 600;
-            border-bottom: 2px solid var(--border);
-            background: var(--warm);
-        }
-
-        .comparison th:first-child {
-            width: 28%;
-        }
-
-        .comparison th.highlight {
-            background: var(--accent);
-            color: white;
-            text-align: center;
-        }
-
-        .comparison td {
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border);
-            font-size: 14px;
-            vertical-align: middle;
-            text-align: center;
-            color: var(--text-secondary);
-        }
-
-        .comparison td:first-child {
-            text-align: left;
-            font-weight: 500;
-            color: var(--text);
-        }
-
-        .comparison tr:last-child td {
-            border-bottom: none;
-        }
-
-        .comparison .check {
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 18px;
-        }
-
-        .comparison .dash {
-            color: #ccc;
-        }
-
-        .comparison td.highlight-col {
-            background: rgba(123, 94, 167, 0.04);
-        }
-
-        /* Steps */
-        .steps {
+        /* Comparison */
+        .comparison-grid {
             display: grid;
-            gap: 16px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
             margin-top: 24px;
         }
 
-        .step {
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
+        .comp-col {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 16px;
+            text-align: center;
         }
 
-        .step-num {
-            flex-shrink: 0;
-            width: 36px;
-            height: 36px;
+        .comp-col.highlighted {
             background: var(--accent);
+            border-color: var(--accent);
             color: white;
-            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(123, 94, 167, 0.25);
+        }
+
+        .comp-col-name {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            min-height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 600;
-            font-size: 16px;
         }
 
-        .step-content h3 {
-            font-size: 16px;
+        .comp-col.highlighted .comp-col-name {
+            color: white;
+        }
+
+        .comp-row {
+            padding: 8px 0;
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            min-height: 48px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .comp-col.highlighted .comp-row {
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        .comp-row-label {
+            font-size: 11px;
+            color: var(--text-secondary);
             margin-bottom: 4px;
         }
 
-        .step-content p {
-            font-size: 15px;
-            margin-bottom: 0;
+        .comp-col.highlighted .comp-row-label {
+            color: rgba(255,255,255,0.6);
         }
+
+        .comp-check {
+            color: var(--green);
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .comp-col.highlighted .comp-check {
+            color: #7FE08A;
+        }
+
+        .comp-dash {
+            color: #D0D0D0;
+            font-size: 18px;
+        }
+
+        .comp-col.highlighted .comp-dash {
+            color: rgba(255,255,255,0.3);
+        }
+
+        .comp-text {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .comp-col.highlighted .comp-text {
+            color: white;
+        }
+
+        /* Steps */
+        .steps { display: grid; gap: 16px; margin-top: 24px; }
+        .step { display: flex; gap: 16px; align-items: flex-start; }
+        .step-num {
+            flex-shrink: 0; width: 36px; height: 36px;
+            background: var(--accent); color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 600; font-size: 16px;
+        }
+        .step-content h3 { font-size: 16px; margin-bottom: 4px; }
+        .step-content p { font-size: 15px; margin-bottom: 0; }
 
         /* ROI */
         .roi-grid {
@@ -335,181 +364,81 @@
             gap: 16px;
             margin: 24px 0;
         }
-
         .roi-card {
-            background: var(--accent);
-            color: white;
-            border-radius: 16px;
-            padding: 24px 20px;
-            text-align: center;
+            background: var(--accent); color: white; border-radius: 16px;
+            padding: 24px 20px; text-align: center;
         }
-
-        .roi-card .roi-number {
-            font-size: 32px;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-
-        .roi-card .roi-label {
-            font-size: 13px;
-            opacity: 0.85;
-            line-height: 1.4;
-        }
-
-        .roi-source {
-            font-size: 13px;
-            color: var(--text-secondary);
-            text-align: center;
-            margin-top: 8px;
-        }
+        .roi-card .roi-number { font-size: 32px; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+        .roi-card .roi-label { font-size: 13px; opacity: 0.85; line-height: 1.4; }
+        .roi-source { font-size: 13px; color: var(--text-secondary); text-align: center; margin-top: 8px; }
 
         /* CTA */
-        .cta {
-            text-align: center;
-            padding: 60px 0 20px;
-        }
-
+        .cta { text-align: center; padding: 60px 0 20px; }
         .cta-box {
-            background: var(--accent);
-            color: white;
-            border-radius: 24px;
-            padding: 48px 40px;
+            background: var(--accent); color: white; border-radius: 24px; padding: 48px 40px;
         }
-
-        .cta-box h2 {
-            color: white;
-            font-size: 32px;
-            margin-bottom: 12px;
-        }
-
-        .cta-box p {
-            color: rgba(255,255,255,0.8);
-            font-size: 18px;
-            margin-bottom: 28px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
+        .cta-box h2 { color: white; font-size: 28px; margin-bottom: 24px; }
+        .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
         .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: white;
-            color: var(--accent);
-            padding: 14px 28px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex; align-items: center; gap: 8px;
+            background: white; color: var(--accent); padding: 14px 28px;
+            border-radius: 12px; font-size: 16px; font-weight: 600;
+            text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
         }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-        }
-
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
         .cta-button.secondary {
-            background: rgba(255,255,255,0.15);
-            color: white;
+            background: rgba(255,255,255,0.15); color: white;
             border: 1px solid rgba(255,255,255,0.3);
         }
-
-        .cta-button.secondary:hover {
-            background: rgba(255,255,255,0.25);
-        }
-
-        .cta-note {
-            margin-top: 20px;
-            font-size: 14px;
-            color: rgba(255,255,255,0.6);
-        }
-
-        /* App Store section */
-        .appstore-section {
-            text-align: center;
-            padding: 40px 0 60px;
-        }
-
-        .appstore-section p {
-            font-size: 15px;
-            margin-bottom: 16px;
-        }
-
-        .appstore-badge {
-            display: inline-block;
-            height: 48px;
-        }
-
-        .appstore-badge img {
-            height: 48px;
-        }
-
-        .ios-note {
-            font-size: 13px;
-            color: #999;
-            margin-top: 12px;
-        }
+        .cta-button.secondary:hover { background: rgba(255,255,255,0.25); }
+        .cta-note { margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.6); }
 
         /* Footer */
         .footer {
-            text-align: center;
-            padding: 24px 0 48px;
-            font-size: 14px;
-            color: var(--text-secondary);
+            text-align: center; padding: 40px 0 48px; font-size: 14px; color: var(--text-secondary);
         }
+        .footer-tagline { margin-bottom: 4px; font-weight: 500; color: var(--text); }
 
-        .footer-tagline {
-            margin-bottom: 4px;
-            font-weight: 500;
-            color: var(--text);
-        }
-
-        /* Divider */
-        .divider {
-            height: 1px;
-            background: var(--border);
-            margin: 0;
-        }
+        .divider { height: 1px; background: var(--border); margin: 0; }
 
         /* Responsive */
         @media (max-width: 640px) {
             h1 { font-size: 30px; }
             h2 { font-size: 24px; }
             .hero { padding: 80px 0 40px; }
-            .hero p { font-size: 17px; }
+            .hero-desc { font-size: 17px; }
             .stats { grid-template-columns: 1fr; }
             .features-grid { grid-template-columns: 1fr; }
             .roi-grid { grid-template-columns: 1fr; }
-            .stat-number { font-size: 28px; }
+            .comparison-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
             .diff-block { padding: 24px 20px; }
             .cta-box { padding: 36px 24px; }
-            .cta-box h2 { font-size: 26px; }
-            .comparison th, .comparison td { padding: 10px 10px; font-size: 12px; }
-            .comparison th:first-child { width: 30%; }
+            .cta-box h2 { font-size: 24px; }
             .cta-buttons { flex-direction: column; align-items: center; }
+            .hero-actions { flex-direction: column; align-items: center; }
         }
 
-        /* Hide inactive lang */
         [data-lang="ru"] { display: none; }
     </style>
 </head>
 <body>
 
-<!-- Language switcher -->
-<div class="lang-switch">
-    <button class="lang-btn active" onclick="switchLang('uk')">UA</button>
-    <button class="lang-btn" onclick="switchLang('ru')">RU</button>
-</div>
+<!-- Header -->
+<header class="site-header">
+    <div class="header-inner">
+        <a href="#" class="logo">
+            <img src="logo.png" alt="Still Space">
+            <span>Still Space</span>
+        </a>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="switchLang('uk')">UA</button>
+            <button class="lang-btn" onclick="switchLang('ru')">RU</button>
+        </div>
+    </div>
+</header>
 
 <!-- HERO -->
-<header class="hero">
+<section class="hero">
     <div class="container">
         <div class="hero-badge">
             <span data-lang="uk">Безкоштовний пілот &mdash; 60 днів</span>
@@ -519,12 +448,25 @@
             <span data-lang="uk">Still Space<br>для команд</span>
             <span data-lang="ru">Still Space<br>для команд</span>
         </h1>
-        <p>
+        <p class="hero-desc">
             <span data-lang="uk">Застосунок щоденної турботи про ментальне здоров'я співробітників. Науково обґрунтований підхід. Повна приватність.</span>
             <span data-lang="ru">Приложение ежедневной заботы о ментальном здоровье сотрудников. Научно обоснованный подход. Полная приватность.</span>
         </p>
+        <div class="hero-actions">
+            <a href="mailto:kolycha9@gmail.com?subject=Still%20Space%20для%20команди" class="btn-primary">
+                <span data-lang="uk">Отримати доступ</span>
+                <span data-lang="ru">Получить доступ</span>
+            </a>
+            <a href="https://apps.apple.com/app/still-space" target="_blank" class="appstore-link">
+                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+            </a>
+        </div>
+        <div class="ios-note">
+            <span data-lang="uk">Наразі доступно тільки для iOS</span>
+            <span data-lang="ru">Сейчас доступно только для iOS</span>
+        </div>
     </div>
-</header>
+</section>
 
 <!-- PROBLEM -->
 <section>
@@ -581,63 +523,36 @@
 
         <div class="science-grid">
             <div class="science-card">
-                <h3>
-                    <span data-lang="uk">Поведінкова активація</span>
-                    <span data-lang="ru">Поведенческая активация</span>
-                </h3>
+                <h3><span data-lang="uk">Поведінкова активація</span><span data-lang="ru">Поведенческая активация</span></h3>
                 <p>
                     <span data-lang="uk">100+ простих дій, підібраних під поточний стан і місце: вдома, на роботі, на вулиці. Не потребує спеціаліста, працює автономно та офлайн.</span>
                     <span data-lang="ru">100+ простых действий, подобранных под текущее состояние и место: дома, на работе, на улице. Не требует специалиста, работает автономно и офлайн.</span>
                 </p>
-                <span class="evidence">
-                    <span data-lang="uk">Мета-аналіз: Hedges' g = 0.85</span>
-                    <span data-lang="ru">Мета-анализ: Hedges' g = 0.85</span>
-                </span>
+                <span class="evidence"><span data-lang="uk">Мета-аналіз: Hedges' g = 0.85</span><span data-lang="ru">Мета-анализ: Hedges' g = 0.85</span></span>
             </div>
-
             <div class="science-card">
-                <h3>
-                    <span data-lang="uk">Експресивне письмо (метод Пеннебейкера)</span>
-                    <span data-lang="ru">Экспрессивное письмо (метод Пеннебейкера)</span>
-                </h3>
+                <h3><span data-lang="uk">Експресивне письмо (метод Пеннебейкера)</span><span data-lang="ru">Экспрессивное письмо (метод Пеннебейкера)</span></h3>
                 <p>
                     <span data-lang="uk">Знижує депресивні симптоми, підвищує самоефективність та стійкість. У звільнених фахівців — прискорює працевлаштування.</span>
                     <span data-lang="ru">Снижает депрессивные симптомы, повышает самоэффективность и устойчивость. У уволенных специалистов — ускоряет трудоустройство.</span>
                 </p>
-                <span class="evidence">
-                    <span data-lang="uk">100+ досліджень з 1986 року</span>
-                    <span data-lang="ru">100+ исследований с 1986 года</span>
-                </span>
+                <span class="evidence"><span data-lang="uk">100+ досліджень з 1986 року</span><span data-lang="ru">100+ исследований с 1986 года</span></span>
             </div>
-
             <div class="science-card">
-                <h3>
-                    <span data-lang="uk">Практики на основі усвідомленості</span>
-                    <span data-lang="ru">Практики на основе осознанности</span>
-                </h3>
+                <h3><span data-lang="uk">Практики на основі усвідомленості</span><span data-lang="ru">Практики на основе осознанности</span></h3>
                 <p>
                     <span data-lang="uk">Щоденні ранкові та вечірні практики: заземлення, робота з тілом, візуалізація, сканування відчуттів. Значно знижують стрес, вигорання та тривогу.</span>
                     <span data-lang="ru">Ежедневные утренние и вечерние практики: заземление, работа с телом, визуализация, сканирование ощущений. Значительно снижают стресс, выгорание и тревогу.</span>
                 </p>
-                <span class="evidence">
-                    <span data-lang="uk">Мета-аналіз: 99 досліджень, 16 054 учасники</span>
-                    <span data-lang="ru">Мета-анализ: 99 исследований, 16 054 участника</span>
-                </span>
+                <span class="evidence"><span data-lang="uk">Мета-аналіз: 99 досліджень, 16 054 учасники</span><span data-lang="ru">Мета-анализ: 99 исследований, 16 054 участника</span></span>
             </div>
-
             <div class="science-card">
-                <h3>
-                    <span data-lang="uk">Рефлексія та саморегуляція</span>
-                    <span data-lang="ru">Рефлексия и саморегуляция</span>
-                </h3>
+                <h3><span data-lang="uk">Рефлексія та саморегуляція</span><span data-lang="ru">Рефлексия и саморегуляция</span></h3>
                 <p>
                     <span data-lang="uk">Думки дня, питання для роздумів — формують звичку помічати свій стан і дбати про себе. Кожна практика з посиланням на наукове джерело.</span>
                     <span data-lang="ru">Мысли дня, вопросы для размышлений — формируют привычку замечать своё состояние и заботиться о себе. Каждая практика со ссылкой на научный источник.</span>
                 </p>
-                <span class="evidence">
-                    <span data-lang="uk">Щоденні ранкові та вечірні ритуали</span>
-                    <span data-lang="ru">Ежедневные утренние и вечерние ритуалы</span>
-                </span>
+                <span class="evidence"><span data-lang="uk">Щоденні ранкові та вечірні ритуали</span><span data-lang="ru">Ежедневные утренние и вечерние ритуалы</span></span>
             </div>
         </div>
     </div>
@@ -648,77 +563,37 @@
 <!-- FEATURES -->
 <section>
     <div class="container">
-        <h2>
-            <span data-lang="uk">Що всередині</span>
-            <span data-lang="ru">Что внутри</span>
-        </h2>
-
+        <h2><span data-lang="uk">Що всередині</span><span data-lang="ru">Что внутри</span></h2>
         <div class="features-grid">
             <div class="feature">
                 <div class="feature-icon">&#127793;</div>
-                <h3>
-                    <span data-lang="uk">100+ дій</span>
-                    <span data-lang="ru">100+ действий</span>
-                </h3>
-                <p>
-                    <span data-lang="uk">Під стан і місце: вдома, на роботі, на вулиці</span>
-                    <span data-lang="ru">Под состояние и место: дома, на работе, на улице</span>
-                </p>
+                <h3><span data-lang="uk">100+ дій</span><span data-lang="ru">100+ действий</span></h3>
+                <p><span data-lang="uk">Під стан і місце: вдома, на роботі, на вулиці</span><span data-lang="ru">Под состояние и место: дома, на работе, на улице</span></p>
             </div>
             <div class="feature">
                 <div class="feature-icon">&#9728;&#65039;</div>
-                <h3>
-                    <span data-lang="uk">Ранкові та вечірні практики</span>
-                    <span data-lang="ru">Утренние и вечерние практики</span>
-                </h3>
-                <p>
-                    <span data-lang="uk">Нові щодня. З посиланням на наукове джерело</span>
-                    <span data-lang="ru">Новые каждый день. Со ссылкой на научный источник</span>
-                </p>
+                <h3><span data-lang="uk">Ранкові та вечірні практики</span><span data-lang="ru">Утренние и вечерние практики</span></h3>
+                <p><span data-lang="uk">Нові щодня. З посиланням на наукове джерело</span><span data-lang="ru">Новые каждый день. Со ссылкой на научный источник</span></p>
             </div>
             <div class="feature">
                 <div class="feature-icon">&#128173;</div>
-                <h3>
-                    <span data-lang="uk">Вилити душу</span>
-                    <span data-lang="ru">Выговориться</span>
-                </h3>
-                <p>
-                    <span data-lang="uk">Експресивне письмо за методом Пеннебейкера</span>
-                    <span data-lang="ru">Экспрессивное письмо по методу Пеннебейкера</span>
-                </p>
+                <h3><span data-lang="uk">Вилити душу</span><span data-lang="ru">Выговориться</span></h3>
+                <p><span data-lang="uk">Експресивне письмо за методом Пеннебейкера</span><span data-lang="ru">Экспрессивное письмо по методу Пеннебейкера</span></p>
             </div>
             <div class="feature">
                 <div class="feature-icon">&#128156;</div>
-                <h3>
-                    <span data-lang="uk">Просто побудь поруч</span>
-                    <span data-lang="ru">Просто побудь рядом</span>
-                </h3>
-                <p>
-                    <span data-lang="uk">Заспокійливі звуки, присутність, безпечний простір</span>
-                    <span data-lang="ru">Успокаивающие звуки, присутствие, безопасное пространство</span>
-                </p>
+                <h3><span data-lang="uk">Просто побудь поруч</span><span data-lang="ru">Просто побудь рядом</span></h3>
+                <p><span data-lang="uk">Заспокійливі звуки, присутність, безпечний простір</span><span data-lang="ru">Успокаивающие звуки, присутствие, безопасное пространство</span></p>
             </div>
             <div class="feature">
                 <div class="feature-icon">&#128161;</div>
-                <h3>
-                    <span data-lang="uk">Думка та питання дня</span>
-                    <span data-lang="ru">Мысль и вопрос дня</span>
-                </h3>
-                <p>
-                    <span data-lang="uk">Для рефлексії та мотивації. Від дослідників і мислителів</span>
-                    <span data-lang="ru">Для рефлексии и мотивации. От исследователей и мыслителей</span>
-                </p>
+                <h3><span data-lang="uk">Думка та питання дня</span><span data-lang="ru">Мысль и вопрос дня</span></h3>
+                <p><span data-lang="uk">Для рефлексії та мотивації</span><span data-lang="ru">Для рефлексии и мотивации</span></p>
             </div>
             <div class="feature">
                 <div class="feature-icon">&#128210;</div>
-                <h3>
-                    <span data-lang="uk">Щоденник з інсайтами</span>
-                    <span data-lang="ru">Дневник с инсайтами</span>
-                </h3>
-                <p>
-                    <span data-lang="uk">Патерни настрою, що допомагає — тільки для людини</span>
-                    <span data-lang="ru">Паттерны настроения, что помогает — только для человека</span>
-                </p>
+                <h3><span data-lang="uk">Щоденник з інсайтами</span><span data-lang="ru">Дневник с инсайтами</span></h3>
+                <p><span data-lang="uk">Патерни настрою — тільки для людини</span><span data-lang="ru">Паттерны настроения — только для человека</span></p>
             </div>
         </div>
     </div>
@@ -729,104 +604,140 @@
 <!-- COMPARISON -->
 <section>
     <div class="container">
-        <h2>
-            <span data-lang="uk">Порівняння з альтернативами</span>
-            <span data-lang="ru">Сравнение с альтернативами</span>
-        </h2>
+        <h2><span data-lang="uk">Порівняння з альтернативами</span><span data-lang="ru">Сравнение с альтернативами</span></h2>
 
-        <div class="comparison">
-            <table>
-                <tr>
-                    <th></th>
-                    <th class="highlight">Still Space</th>
-                    <th>Calm / Headspace</th>
-                    <th>
-                        <span data-lang="uk">Корпоративний психолог</span>
-                        <span data-lang="ru">Корпоративный психолог</span>
-                    </th>
-                    <th>EAP</th>
-                </tr>
-                <tr>
-                    <td>
-                        <span data-lang="uk">Науковий підхід</span>
-                        <span data-lang="ru">Научный подход</span>
-                    </td>
-                    <td class="highlight-col check">&#10003;</td>
-                    <td class="check">&#10003;</td>
-                    <td class="check">&#10003;</td>
-                    <td class="check">&#10003;</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span data-lang="uk">Не потребує реєстрації</span>
-                        <span data-lang="ru">Не требует регистрации</span>
-                    </td>
-                    <td class="highlight-col check">&#10003;</td>
-                    <td class="dash">&mdash;</td>
-                    <td class="dash">&mdash;</td>
-                    <td class="dash">&mdash;</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span data-lang="uk">Повна приватність</span>
-                        <span data-lang="ru">Полная приватность</span>
-                    </td>
-                    <td class="highlight-col check">&#10003;</td>
-                    <td class="dash">&mdash;</td>
-                    <td class="dash">&mdash;</td>
-                    <td class="dash">&mdash;</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span data-lang="uk">Працює офлайн</span>
-                        <span data-lang="ru">Работает офлайн</span>
-                    </td>
-                    <td class="highlight-col check">&#10003;</td>
-                    <td class="check">&#10003;</td>
-                    <td class="dash">&mdash;</td>
-                    <td class="dash">&mdash;</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span data-lang="uk">Впровадження за 5 хвилин</span>
-                        <span data-lang="ru">Внедрение за 5 минут</span>
-                    </td>
-                    <td class="highlight-col check">&#10003;</td>
-                    <td class="dash">&mdash;</td>
-                    <td class="dash">&mdash;</td>
-                    <td class="dash">&mdash;</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span data-lang="uk">Без автосписання</span>
-                        <span data-lang="ru">Без автосписания</span>
-                    </td>
-                    <td class="highlight-col check">&#10003;</td>
-                    <td class="dash">&mdash;</td>
-                    <td class="check">&#10003;</td>
-                    <td class="check">&#10003;</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span data-lang="uk">Українська мова</span>
-                        <span data-lang="ru">Украинский язык</span>
-                    </td>
-                    <td class="highlight-col check">&#10003;</td>
-                    <td class="dash">&mdash;</td>
-                    <td class="check">&#10003;</td>
-                    <td class="dash">&mdash;</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span data-lang="uk">Безкоштовний пілот</span>
-                        <span data-lang="ru">Бесплатный пилот</span>
-                    </td>
-                    <td class="highlight-col"><strong>60</strong> <span data-lang="uk">днів</span><span data-lang="ru">дней</span></td>
-                    <td>7&ndash;14 <span data-lang="uk">днів</span><span data-lang="ru">дней</span></td>
-                    <td class="dash">&mdash;</td>
-                    <td class="dash">&mdash;</td>
-                </tr>
-            </table>
+        <div class="comparison-grid">
+            <!-- Still Space -->
+            <div class="comp-col highlighted">
+                <div class="comp-col-name">Still Space</div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Науковий підхід</span><span data-lang="ru">Научный подход</span></div>
+                    <div class="comp-check">&#10003;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Без реєстрації</span><span data-lang="ru">Без регистрации</span></div>
+                    <div class="comp-check">&#10003;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Приватність</span><span data-lang="ru">Приватность</span></div>
+                    <div class="comp-check">&#10003;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Офлайн</span><span data-lang="ru">Офлайн</span></div>
+                    <div class="comp-check">&#10003;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Впровадження</span><span data-lang="ru">Внедрение</span></div>
+                    <div class="comp-text">5 <span data-lang="uk">хвилин</span><span data-lang="ru">минут</span></div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Українська</span><span data-lang="ru">Украинский</span></div>
+                    <div class="comp-check">&#10003;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Пілот</span><span data-lang="ru">Пилот</span></div>
+                    <div class="comp-text">60 <span data-lang="uk">днів</span><span data-lang="ru">дней</span></div>
+                </div>
+            </div>
+
+            <!-- Calm / Headspace -->
+            <div class="comp-col">
+                <div class="comp-col-name">Calm /<br>Headspace</div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Науковий підхід</span><span data-lang="ru">Научный подход</span></div>
+                    <div class="comp-check">&#10003;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Без реєстрації</span><span data-lang="ru">Без регистрации</span></div>
+                    <div class="comp-dash">&mdash;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Приватність</span><span data-lang="ru">Приватность</span></div>
+                    <div class="comp-dash">&mdash;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Офлайн</span><span data-lang="ru">Офлайн</span></div>
+                    <div class="comp-check">&#10003;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Впровадження</span><span data-lang="ru">Внедрение</span></div>
+                    <div class="comp-text"><span data-lang="uk">тижні</span><span data-lang="ru">недели</span></div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Українська</span><span data-lang="ru">Украинский</span></div>
+                    <div class="comp-dash">&mdash;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Пілот</span><span data-lang="ru">Пилот</span></div>
+                    <div class="comp-text">7&ndash;14 <span data-lang="uk">дн</span><span data-lang="ru">дн</span></div>
+                </div>
+            </div>
+
+            <!-- Corporate psychologist -->
+            <div class="comp-col">
+                <div class="comp-col-name"><span data-lang="uk">Корп. психолог</span><span data-lang="ru">Корп. психолог</span></div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Науковий підхід</span><span data-lang="ru">Научный подход</span></div>
+                    <div class="comp-check">&#10003;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Без реєстрації</span><span data-lang="ru">Без регистрации</span></div>
+                    <div class="comp-dash">&mdash;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Приватність</span><span data-lang="ru">Приватность</span></div>
+                    <div class="comp-dash">&mdash;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Офлайн</span><span data-lang="ru">Офлайн</span></div>
+                    <div class="comp-dash">&mdash;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Впровадження</span><span data-lang="ru">Внедрение</span></div>
+                    <div class="comp-text"><span data-lang="uk">місяці</span><span data-lang="ru">месяцы</span></div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Українська</span><span data-lang="ru">Украинский</span></div>
+                    <div class="comp-check">&#10003;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Пілот</span><span data-lang="ru">Пилот</span></div>
+                    <div class="comp-dash">&mdash;</div>
+                </div>
+            </div>
+
+            <!-- EAP -->
+            <div class="comp-col">
+                <div class="comp-col-name">EAP</div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Науковий підхід</span><span data-lang="ru">Научный подход</span></div>
+                    <div class="comp-check">&#10003;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Без реєстрації</span><span data-lang="ru">Без регистрации</span></div>
+                    <div class="comp-dash">&mdash;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Приватність</span><span data-lang="ru">Приватность</span></div>
+                    <div class="comp-dash">&mdash;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Офлайн</span><span data-lang="ru">Офлайн</span></div>
+                    <div class="comp-dash">&mdash;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Впровадження</span><span data-lang="ru">Внедрение</span></div>
+                    <div class="comp-text"><span data-lang="uk">місяці</span><span data-lang="ru">месяцы</span></div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Українська</span><span data-lang="ru">Украинский</span></div>
+                    <div class="comp-dash">&mdash;</div>
+                </div>
+                <div class="comp-row">
+                    <div class="comp-row-label"><span data-lang="uk">Пілот</span><span data-lang="ru">Пилот</span></div>
+                    <div class="comp-dash">&mdash;</div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -836,62 +747,34 @@
 <!-- HOW IT WORKS -->
 <section>
     <div class="container">
-        <h2>
-            <span data-lang="uk">Як це працює</span>
-            <span data-lang="ru">Как это работает</span>
-        </h2>
-
+        <h2><span data-lang="uk">Як це працює</span><span data-lang="ru">Как это работает</span></h2>
         <div class="steps">
             <div class="step">
                 <div class="step-num">1</div>
                 <div class="step-content">
-                    <h3>
-                        <span data-lang="uk">Отримайте промокод під розмір вашої команди</span>
-                        <span data-lang="ru">Получите промокод под размер вашей команды</span>
-                    </h3>
-                    <p>
-                        <span data-lang="uk">Напишіть нам — підберемо умови</span>
-                        <span data-lang="ru">Напишите нам — подберём условия</span>
-                    </p>
+                    <h3><span data-lang="uk">Отримайте промокод під розмір вашої команди</span><span data-lang="ru">Получите промокод под размер вашей команды</span></h3>
+                    <p><span data-lang="uk">Напишіть нам — підберемо умови</span><span data-lang="ru">Напишите нам — подберём условия</span></p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">2</div>
                 <div class="step-content">
-                    <h3>
-                        <span data-lang="uk">Співробітники завантажують Still Space</span>
-                        <span data-lang="ru">Сотрудники скачивают Still Space</span>
-                    </h3>
-                    <p>
-                        <span data-lang="uk">Безкоштовно з App Store. Без реєстрацій</span>
-                        <span data-lang="ru">Бесплатно из App Store. Без регистраций</span>
-                    </p>
+                    <h3><span data-lang="uk">Співробітники завантажують Still Space</span><span data-lang="ru">Сотрудники скачивают Still Space</span></h3>
+                    <p><span data-lang="uk">Безкоштовно з App Store. Без реєстрацій</span><span data-lang="ru">Бесплатно из App Store. Без регистраций</span></p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">3</div>
                 <div class="step-content">
-                    <h3>
-                        <span data-lang="uk">Вводять код — повний доступ на 60 днів</span>
-                        <span data-lang="ru">Вводят код — полный доступ на 60 дней</span>
-                    </h3>
-                    <p>
-                        <span data-lang="uk">Без прив'язки картки, без автосписання</span>
-                        <span data-lang="ru">Без привязки карты, без автосписания</span>
-                    </p>
+                    <h3><span data-lang="uk">Вводять код — повний доступ на 60 днів</span><span data-lang="ru">Вводят код — полный доступ на 60 дней</span></h3>
+                    <p><span data-lang="uk">Без прив'язки картки, без автосписання</span><span data-lang="ru">Без привязки карты, без автосписания</span></p>
                 </div>
             </div>
             <div class="step">
                 <div class="step-num">4</div>
                 <div class="step-content">
-                    <h3>
-                        <span data-lang="uk">Після пілота — обговорюємо продовження</span>
-                        <span data-lang="ru">После пилота — обсуждаем продолжение</span>
-                    </h3>
-                    <p>
-                        <span data-lang="uk">Якщо команді підійде — підберемо зручний формат</span>
-                        <span data-lang="ru">Если команде подойдёт — подберём удобный формат</span>
-                    </p>
+                    <h3><span data-lang="uk">Після пілота — обговорюємо продовження</span><span data-lang="ru">После пилота — обсуждаем продолжение</span></h3>
+                    <p><span data-lang="uk">Якщо команді підійде — підберемо зручний формат</span><span data-lang="ru">Если команде подойдёт — подберём удобный формат</span></p>
                 </div>
             </div>
         </div>
@@ -903,32 +786,19 @@
 <!-- ROI -->
 <section>
     <div class="container">
-        <h2>
-            <span data-lang="uk">Still Space для команди — це інвестиція</span>
-            <span data-lang="ru">Still Space для команды — это инвестиция</span>
-        </h2>
-
+        <h2><span data-lang="uk">Still Space для команди — це інвестиція</span><span data-lang="ru">Still Space для команды — это инвестиция</span></h2>
         <div class="roi-grid">
             <div class="roi-card">
                 <div class="roi-number">4.7x</div>
-                <div class="roi-label">
-                    <span data-lang="uk">повернення кожної одиниці, вкладеної в ментальне здоров'я</span>
-                    <span data-lang="ru">возврат каждой единицы, вложенной в ментальное здоровье</span>
-                </div>
+                <div class="roi-label"><span data-lang="uk">повернення кожної одиниці, вкладеної в ментальне здоров'я</span><span data-lang="ru">возврат каждой единицы, вложенной в ментальное здоровье</span></div>
             </div>
             <div class="roi-card">
                 <div class="roi-number">+12%</div>
-                <div class="roi-label">
-                    <span data-lang="uk">продуктивність у здоровому середовищі</span>
-                    <span data-lang="ru">продуктивность в здоровой среде</span>
-                </div>
+                <div class="roi-label"><span data-lang="uk">продуктивність у здоровому середовищі</span><span data-lang="ru">продуктивность в здоровой среде</span></div>
             </div>
             <div class="roi-card">
                 <div class="roi-number">$10.8K</div>
-                <div class="roi-label">
-                    <span data-lang="uk">на рік коштує вигорання одного менеджера</span>
-                    <span data-lang="ru">в год стоит выгорание одного менеджера</span>
-                </div>
+                <div class="roi-label"><span data-lang="uk">на рік коштує вигорання одного менеджера</span><span data-lang="ru">в год стоит выгорание одного менеджера</span></div>
             </div>
         </div>
         <p class="roi-source">Deloitte 2024, WHO, American Journal of Preventive Medicine 2025</p>
@@ -940,13 +810,9 @@
     <div class="container">
         <div class="cta-box">
             <h2>
-                <span data-lang="uk">Спробуйте безкоштовно — 60 днів</span>
-                <span data-lang="ru">Попробуйте бесплатно — 60 дней</span>
+                <span data-lang="uk">Отримати два місяці повного доступу для команди</span>
+                <span data-lang="ru">Получить два месяца полного доступа для команды</span>
             </h2>
-            <p>
-                <span data-lang="uk">Два місяці повного доступу для вашої команди</span>
-                <span data-lang="ru">Два месяца полного доступа для вашей команды</span>
-            </p>
             <div class="cta-buttons">
                 <a href="mailto:kolycha9@gmail.com?subject=Still%20Space%20для%20команди" class="cta-button">
                     <span data-lang="uk">Написати на пошту</span>
@@ -957,23 +823,6 @@
                 </a>
             </div>
             <div class="cta-note">kolycha9@gmail.com</div>
-        </div>
-    </div>
-</section>
-
-<!-- App Store -->
-<section class="appstore-section">
-    <div class="container">
-        <p>
-            <span data-lang="uk">Завантажте Still Space вже зараз</span>
-            <span data-lang="ru">Скачайте Still Space уже сейчас</span>
-        </p>
-        <a href="https://apps.apple.com/app/still-space" target="_blank">
-            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" style="height: 48px;">
-        </a>
-        <div class="ios-note">
-            <span data-lang="uk">Наразі доступно тільки для iOS</span>
-            <span data-lang="ru">Сейчас доступно только для iOS</span>
         </div>
     </div>
 </section>
@@ -995,7 +844,6 @@ function switchLang(lang) {
     const ukEls = document.querySelectorAll('[data-lang="uk"]');
     const ruEls = document.querySelectorAll('[data-lang="ru"]');
     const btns = document.querySelectorAll('.lang-btn');
-
     if (lang === 'ru') {
         ukEls.forEach(el => el.style.display = 'none');
         ruEls.forEach(el => el.style.display = '');
