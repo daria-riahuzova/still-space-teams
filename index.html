@@ -837,15 +837,22 @@
 
 <script>
 function switchLang(lang) {
-    const langs = ['uk', 'ru', 'en'];
-    langs.forEach(l => {
-        document.querySelectorAll('[data-lang="' + l + '"]').forEach(el => {
-            el.style.display = l === lang ? '' : 'none';
-        });
-    });
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.textContent.trim() === {uk:'UA',ru:'RU',en:'EN'}[lang]);
-    });
+    var map = {uk:'UA', ru:'RU', en:'EN'};
+    var langs = ['uk', 'ru', 'en'];
+    for (var i = 0; i < langs.length; i++) {
+        var els = document.querySelectorAll('[data-lang="' + langs[i] + '"]');
+        for (var j = 0; j < els.length; j++) {
+            els[j].style.display = langs[i] === lang ? 'inline' : 'none';
+        }
+    }
+    var btns = document.querySelectorAll('.lang-btn');
+    for (var k = 0; k < btns.length; k++) {
+        if (btns[k].textContent.trim() === map[lang]) {
+            btns[k].classList.add('active');
+        } else {
+            btns[k].classList.remove('active');
+        }
+    }
     document.documentElement.lang = lang;
 }
 </script>
