@@ -140,16 +140,18 @@
             gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
-            align-items: center;
+            align-items: stretch;
         }
 
         .btn-primary {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             background: var(--accent);
             color: white;
-            padding: 14px 28px;
+            padding: 0 28px;
+            height: 48px;
             border-radius: 12px;
             font-size: 16px;
             font-weight: 600;
@@ -164,8 +166,14 @@
             box-shadow: 0 8px 24px rgba(123, 94, 167, 0.3);
         }
 
+        .appstore-link {
+            display: inline-flex;
+            align-items: center;
+            height: 48px;
+        }
+
         .appstore-link img {
-            height: 44px;
+            height: 48px;
             display: block;
         }
 
@@ -178,7 +186,7 @@
 
         /* Sections */
         section { padding: 60px 0; }
-        h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.3px; }
+        h2 { font-size: 28px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.3px; text-align: center; }
         h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
         p { color: var(--text-secondary); margin-bottom: 16px; }
 
@@ -255,94 +263,83 @@
         .feature h3 { font-size: 16px; margin-bottom: 6px; }
         .feature p { font-size: 14px; margin-bottom: 0; }
 
-        /* Comparison */
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+        /* Comparison table */
+        .comparison {
             margin-top: 24px;
-        }
-
-        .comp-col {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 20px 16px;
-            text-align: center;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--card-bg);
         }
 
-        .comp-col.highlighted {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: white;
-            box-shadow: 0 4px 20px rgba(123, 94, 167, 0.25);
+        .comparison table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        .comp-col-name {
-            font-size: 15px;
+        .comparison thead th {
+            padding: 16px 12px;
+            font-size: 14px;
             font-weight: 600;
-            margin-bottom: 16px;
-            min-height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .comp-col.highlighted .comp-col-name {
-            color: white;
-        }
-
-        .comp-row {
-            padding: 8px 0;
-            border-top: 1px solid var(--border);
-            font-size: 13px;
-            min-height: 48px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .comp-col.highlighted .comp-row {
-            border-color: rgba(255,255,255,0.15);
-        }
-
-        .comp-row-label {
-            font-size: 11px;
+            text-align: center;
+            border-bottom: 2px solid var(--border);
+            background: var(--bg);
             color: var(--text-secondary);
-            margin-bottom: 4px;
         }
 
-        .comp-col.highlighted .comp-row-label {
-            color: rgba(255,255,255,0.6);
+        .comparison thead th:first-child {
+            text-align: left;
+            padding-left: 20px;
+            color: var(--text);
         }
 
-        .comp-check {
+        .comparison thead th.hl {
+            background: var(--accent);
+            color: white;
+            border-bottom-color: var(--accent);
+        }
+
+        .comparison tbody td {
+            padding: 14px 12px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .comparison tbody td:first-child {
+            text-align: left;
+            padding-left: 20px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .comparison tbody td.hl {
+            background: rgba(123, 94, 167, 0.04);
+        }
+
+        .comparison tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison .yes {
             color: var(--green);
-            font-size: 20px;
             font-weight: 700;
-        }
-
-        .comp-col.highlighted .comp-check {
-            color: #7FE08A;
-        }
-
-        .comp-dash {
-            color: #D0D0D0;
             font-size: 18px;
         }
 
-        .comp-col.highlighted .comp-dash {
-            color: rgba(255,255,255,0.3);
+        .comparison .no {
+            color: #D0D0D0;
+            font-size: 16px;
         }
 
-        .comp-text {
-            font-size: 13px;
+        .comparison .val {
             font-weight: 600;
+            color: var(--text);
         }
 
-        .comp-col.highlighted .comp-text {
-            color: white;
+        .comparison td.hl .val {
+            color: var(--accent);
         }
 
         /* Steps */
@@ -410,7 +407,9 @@
             .stats { grid-template-columns: 1fr; }
             .features-grid { grid-template-columns: 1fr; }
             .roi-grid { grid-template-columns: 1fr; }
-            .comparison-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .comparison { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comparison table { min-width: 520px; }
+            .comparison thead th, .comparison tbody td { padding: 10px 8px; font-size: 13px; }
             .diff-block { padding: 24px 20px; }
             .cta-box { padding: 36px 24px; }
             .cta-box h2 { font-size: 24px; }
@@ -606,138 +605,69 @@
     <div class="container">
         <h2><span data-lang="uk">Порівняння з альтернативами</span><span data-lang="ru">Сравнение с альтернативами</span></h2>
 
-        <div class="comparison-grid">
-            <!-- Still Space -->
-            <div class="comp-col highlighted">
-                <div class="comp-col-name">Still Space</div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Науковий підхід</span><span data-lang="ru">Научный подход</span></div>
-                    <div class="comp-check">&#10003;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Без реєстрації</span><span data-lang="ru">Без регистрации</span></div>
-                    <div class="comp-check">&#10003;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Приватність</span><span data-lang="ru">Приватность</span></div>
-                    <div class="comp-check">&#10003;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Офлайн</span><span data-lang="ru">Офлайн</span></div>
-                    <div class="comp-check">&#10003;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Впровадження</span><span data-lang="ru">Внедрение</span></div>
-                    <div class="comp-text">5 <span data-lang="uk">хвилин</span><span data-lang="ru">минут</span></div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Українська</span><span data-lang="ru">Украинский</span></div>
-                    <div class="comp-check">&#10003;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Пілот</span><span data-lang="ru">Пилот</span></div>
-                    <div class="comp-text">60 <span data-lang="uk">днів</span><span data-lang="ru">дней</span></div>
-                </div>
-            </div>
-
-            <!-- Calm / Headspace -->
-            <div class="comp-col">
-                <div class="comp-col-name">Calm /<br>Headspace</div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Науковий підхід</span><span data-lang="ru">Научный подход</span></div>
-                    <div class="comp-check">&#10003;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Без реєстрації</span><span data-lang="ru">Без регистрации</span></div>
-                    <div class="comp-dash">&mdash;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Приватність</span><span data-lang="ru">Приватность</span></div>
-                    <div class="comp-dash">&mdash;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Офлайн</span><span data-lang="ru">Офлайн</span></div>
-                    <div class="comp-check">&#10003;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Впровадження</span><span data-lang="ru">Внедрение</span></div>
-                    <div class="comp-text"><span data-lang="uk">тижні</span><span data-lang="ru">недели</span></div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Українська</span><span data-lang="ru">Украинский</span></div>
-                    <div class="comp-dash">&mdash;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Пілот</span><span data-lang="ru">Пилот</span></div>
-                    <div class="comp-text">7&ndash;14 <span data-lang="uk">дн</span><span data-lang="ru">дн</span></div>
-                </div>
-            </div>
-
-            <!-- Corporate psychologist -->
-            <div class="comp-col">
-                <div class="comp-col-name"><span data-lang="uk">Корп. психолог</span><span data-lang="ru">Корп. психолог</span></div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Науковий підхід</span><span data-lang="ru">Научный подход</span></div>
-                    <div class="comp-check">&#10003;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Без реєстрації</span><span data-lang="ru">Без регистрации</span></div>
-                    <div class="comp-dash">&mdash;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Приватність</span><span data-lang="ru">Приватность</span></div>
-                    <div class="comp-dash">&mdash;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Офлайн</span><span data-lang="ru">Офлайн</span></div>
-                    <div class="comp-dash">&mdash;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Впровадження</span><span data-lang="ru">Внедрение</span></div>
-                    <div class="comp-text"><span data-lang="uk">місяці</span><span data-lang="ru">месяцы</span></div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Українська</span><span data-lang="ru">Украинский</span></div>
-                    <div class="comp-check">&#10003;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Пілот</span><span data-lang="ru">Пилот</span></div>
-                    <div class="comp-dash">&mdash;</div>
-                </div>
-            </div>
-
-            <!-- EAP -->
-            <div class="comp-col">
-                <div class="comp-col-name">EAP</div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Науковий підхід</span><span data-lang="ru">Научный подход</span></div>
-                    <div class="comp-check">&#10003;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Без реєстрації</span><span data-lang="ru">Без регистрации</span></div>
-                    <div class="comp-dash">&mdash;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Приватність</span><span data-lang="ru">Приватность</span></div>
-                    <div class="comp-dash">&mdash;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Офлайн</span><span data-lang="ru">Офлайн</span></div>
-                    <div class="comp-dash">&mdash;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Впровадження</span><span data-lang="ru">Внедрение</span></div>
-                    <div class="comp-text"><span data-lang="uk">місяці</span><span data-lang="ru">месяцы</span></div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Українська</span><span data-lang="ru">Украинский</span></div>
-                    <div class="comp-dash">&mdash;</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-row-label"><span data-lang="uk">Пілот</span><span data-lang="ru">Пилот</span></div>
-                    <div class="comp-dash">&mdash;</div>
-                </div>
-            </div>
+        <div class="comparison">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="hl">Still Space</th>
+                        <th>Calm / Headspace</th>
+                        <th><span data-lang="uk">Корп. психолог</span><span data-lang="ru">Корп. психолог</span></th>
+                        <th>EAP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span data-lang="uk">Науковий підхід</span><span data-lang="ru">Научный подход</span></td>
+                        <td class="hl"><span class="yes">&#10003;</span></td>
+                        <td><span class="yes">&#10003;</span></td>
+                        <td><span class="yes">&#10003;</span></td>
+                        <td><span class="yes">&#10003;</span></td>
+                    </tr>
+                    <tr>
+                        <td><span data-lang="uk">Без реєстрації</span><span data-lang="ru">Без регистрации</span></td>
+                        <td class="hl"><span class="yes">&#10003;</span></td>
+                        <td><span class="no">&mdash;</span></td>
+                        <td><span class="no">&mdash;</span></td>
+                        <td><span class="no">&mdash;</span></td>
+                    </tr>
+                    <tr>
+                        <td><span data-lang="uk">Повна приватність</span><span data-lang="ru">Полная приватность</span></td>
+                        <td class="hl"><span class="yes">&#10003;</span></td>
+                        <td><span class="no">&mdash;</span></td>
+                        <td><span class="no">&mdash;</span></td>
+                        <td><span class="no">&mdash;</span></td>
+                    </tr>
+                    <tr>
+                        <td><span data-lang="uk">Працює офлайн</span><span data-lang="ru">Работает офлайн</span></td>
+                        <td class="hl"><span class="yes">&#10003;</span></td>
+                        <td><span class="yes">&#10003;</span></td>
+                        <td><span class="no">&mdash;</span></td>
+                        <td><span class="no">&mdash;</span></td>
+                    </tr>
+                    <tr>
+                        <td><span data-lang="uk">Впровадження</span><span data-lang="ru">Внедрение</span></td>
+                        <td class="hl"><span class="val">5 <span data-lang="uk">хв</span><span data-lang="ru">мин</span></span></td>
+                        <td><span class="val"><span data-lang="uk">тижні</span><span data-lang="ru">недели</span></span></td>
+                        <td><span class="val"><span data-lang="uk">місяці</span><span data-lang="ru">месяцы</span></span></td>
+                        <td><span class="val"><span data-lang="uk">місяці</span><span data-lang="ru">месяцы</span></span></td>
+                    </tr>
+                    <tr>
+                        <td><span data-lang="uk">Українська мова</span><span data-lang="ru">Украинский язык</span></td>
+                        <td class="hl"><span class="yes">&#10003;</span></td>
+                        <td><span class="no">&mdash;</span></td>
+                        <td><span class="yes">&#10003;</span></td>
+                        <td><span class="no">&mdash;</span></td>
+                    </tr>
+                    <tr>
+                        <td><span data-lang="uk">Безкоштовний пілот</span><span data-lang="ru">Бесплатный пилот</span></td>
+                        <td class="hl"><span class="val">60 <span data-lang="uk">днів</span><span data-lang="ru">дней</span></span></td>
+                        <td><span class="val">7–14 <span data-lang="uk">дн</span><span data-lang="ru">дн</span></span></td>
+                        <td><span class="no">&mdash;</span></td>
+                        <td><span class="no">&mdash;</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </section>
