@@ -111,8 +111,8 @@
 
         .hero-badge {
             display: inline-block;
-            background: var(--accent-light);
-            color: var(--accent);
+            background: #E8F5E9;
+            color: #2E7D32;
             padding: 6px 16px;
             border-radius: 20px;
             font-size: 14px;
@@ -223,7 +223,16 @@
         }
 
         .stat-label { font-size: 14px; color: var(--text-secondary); line-height: 1.4; }
-        .stat-source { font-size: 12px; color: #999; margin-top: 6px; }
+        .stat-source {
+            display: inline-block;
+            background: #E8F5E9;
+            color: #2E7D32;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-top: 8px;
+        }
 
         /* Diff block */
         .diff-block {
@@ -245,8 +254,8 @@
         .science-card h3 { color: var(--accent); }
         .science-card .evidence {
             display: inline-block;
-            background: var(--accent-light);
-            color: var(--accent);
+            background: #E8F5E9;
+            color: #2E7D32;
             padding: 4px 12px;
             border-radius: 12px;
             font-size: 13px;
@@ -383,7 +392,20 @@
         }
         .roi-card .roi-number { font-size: 32px; font-weight: 700; line-height: 1; margin-bottom: 8px; }
         .roi-card .roi-label { font-size: 13px; opacity: 0.85; line-height: 1.4; }
-        .roi-source { font-size: 13px; color: var(--text-secondary); text-align: center; margin-top: 8px; }
+        .roi-source {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 0;
+        }
+        .roi-source span, .roi-source {
+            display: inline-block;
+            background: #E8F5E9;
+            color: #2E7D32;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 500;
+        }
 
         /* CTA */
         .cta { text-align: center; padding: 60px 0 20px; }
