@@ -510,7 +510,9 @@
             <span data-lang="ru">Сейчас доступно только для iOS</span>
             <span data-lang="en">Currently available for iOS only</span>
         </div>
-        <img src="screens.png" alt="Still Space screens" class="hero-screens">
+        <img src="screens.png" alt="Still Space screens" class="hero-screens" data-lang="uk">
+        <img src="screens-ru.png" alt="Still Space screens" class="hero-screens" data-lang="ru">
+        <img src="screens.png" alt="Still Space screens" class="hero-screens" data-lang="en">
     </div>
 </section>
 
@@ -843,7 +845,12 @@ function switchLang(lang) {
     for (var i = 0; i < langs.length; i++) {
         var els = document.querySelectorAll('[data-lang="' + langs[i] + '"]');
         for (var j = 0; j < els.length; j++) {
-            els[j].style.display = langs[i] === lang ? 'inline' : 'none';
+            if (langs[i] === lang) {
+                var tag = els[j].tagName;
+                els[j].style.display = (tag === 'IMG' || tag === 'P' || tag === 'DIV') ? 'block' : 'inline';
+            } else {
+                els[j].style.display = 'none';
+            }
         }
     }
     var btns = document.querySelectorAll('.lang-btn');
