@@ -16,6 +16,8 @@
     --charcoal: #2C2C2C;
     --muted: #7A7A7A;
     --accent: #C4956A;
+    --purple: #7C5CBF;
+    --purple-light: #9B7FD4;
     --soft-green: #E8F0E5;
   }
 
@@ -103,13 +105,13 @@
   .hero-meta-item { color: rgba(255,255,255,0.35); font-size: 13px; }
   .hero-meta-item strong { display: block; color: rgba(255,255,255,0.7); font-size: 15px; margin-bottom: 2px; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
-  .btn-sage {
-    display: inline-block; background: var(--sage); color: #fff;
+  .btn-sage, .btn-primary {
+    display: inline-block; background: var(--purple); color: #fff;
     font-size: 15px; font-weight: 500; font-family: 'DM Sans', sans-serif;
     border-radius: 100px; padding: 14px 32px;
     text-decoration: none; transition: background 0.2s, transform 0.2s;
   }
-  .btn-sage:hover { background: var(--sage-light); transform: translateY(-2px); }
+  .btn-sage:hover, .btn-primary:hover { background: var(--purple-light); transform: translateY(-2px); }
   .appstore-link { display: inline-flex; align-items: center; height: 48px; }
   .appstore-link img { height: 44px; display: block; }
   .ios-note { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 16px; }
@@ -308,16 +310,15 @@
     line-height: 1.6; margin-bottom: 48px; font-weight: 300;
   }
   .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
-  .btn-sage-outline {
+  .btn-sage-outline, .btn-primary-outline {
     display: inline-block;
     background: rgba(255,255,255,0.1); color: #fff;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
     font-size: 15px; font-weight: 500; font-family: 'DM Sans', sans-serif;
     border-radius: 100px; padding: 14px 32px;
     text-decoration: none; transition: all 0.2s;
   }
-  .btn-sage-outline:hover { background: rgba(255,255,255,0.2); }
-  .contact-info { font-size: 14px; color: rgba(255,255,255,0.3); margin-top: 16px; }
+  .btn-sage-outline:hover, .btn-primary-outline:hover { background: rgba(255,255,255,0.2); }
   .contact-info a { color: rgba(255,255,255,0.5); text-decoration: none; }
 
   /* Footer */
@@ -705,9 +706,9 @@
   <div class="container">
     <div class="cta-logo">Still Space</div>
     <h2>
-      <span data-lang="uk">Два місяці повного доступу<br>для <em>вашої команди</em></span>
-      <span data-lang="ru">Два месяца полного доступа<br>для <em>вашей команды</em></span>
-      <span data-lang="en">Two months of full access<br>for <em>your team</em></span>
+      <span data-lang="uk">Два місяці повного&nbsp;доступу</span>
+      <span data-lang="ru">Два месяца полного&nbsp;доступа</span>
+      <span data-lang="en">Two months of full&nbsp;access</span>
     </h2>
     <p class="cta-sub">
       <span data-lang="uk">Без зобов'язань. Без картки. Без&nbsp;автосписання.</span>
@@ -715,18 +716,13 @@
       <span data-lang="en">No commitment. No card. No&nbsp;auto-renewal.</span>
     </p>
     <div class="cta-buttons">
-      <a href="https://www.linkedin.com/in/riahuzova/" target="_blank" class="btn-sage">
+      <a href="https://www.linkedin.com/in/riahuzova/" target="_blank" class="btn-primary">
         <span data-lang="uk">Написати в LinkedIn</span>
         <span data-lang="ru">Написать в LinkedIn</span>
         <span data-lang="en">Message on LinkedIn</span>
       </a>
-      <a href="mailto:kolycha9@gmail.com" class="btn-sage-outline">
-        <span data-lang="uk">Написати на пошту</span>
-        <span data-lang="ru">Написать на почту</span>
-        <span data-lang="en">Send an email</span>
-      </a>
+      <a href="https://apps.apple.com/app/still-space/id6744129553" target="_blank" class="btn-primary-outline">App Store</a>
     </div>
-    <div class="contact-info">kolycha9@gmail.com</div>
   </div>
 </section>
 
